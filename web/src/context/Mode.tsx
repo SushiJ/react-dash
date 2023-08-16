@@ -1,22 +1,26 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export type ModeContext = {
-  mode: string;
-  setMode: React.Dispatch<React.SetStateAction<string>>;
+  mode: "dark" | "light";
+  setMode: React.Dispatch<React.SetStateAction<"dark" | "light">>;
 };
 
-const defaultValue = {
-  mode: "dark",
-  setMode: () => {},
-};
-
-export const ModeContext = createContext<ModeContext>(defaultValue);
+export const ModeContext = createContext<ModeContext | null>(null);
+ModeContext.displayName = "Theme Context";
 
 export const ModeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [mode, setMode] = useState<string>("dark");
+  const [mode, setMode] = useState<"dark" | "light">("dark");
   return (
     <ModeContext.Provider value={{ mode, setMode }}>
       {children}
     </ModeContext.Provider>
   );
+};
+
+export const useThemeMode = () => {
+  const context = useContext(ModeContext);
+  if (!context) {
+    return;
+  }
+  return context;
 };

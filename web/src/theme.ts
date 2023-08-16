@@ -86,51 +86,47 @@ export const tokensLight = {
   },
 };
 
-function setPalette(mode: string) {
+function setPalette(mode: "dark" | "light") {
   if (mode === "dark") {
     return {
-      primary: {
-        ...tokensDark.primary,
+      mode,
+      primary: Object.assign(tokensDark.primary, {
         main: tokensDark.primary[400],
         light: tokensDark.primary[400],
-      },
-      secondary: {
-        ...tokensDark.secondary,
-        main: tokensDark.secondary[300],
-      },
-      neutral: {
-        ...tokensDark.grey,
+      }),
+      secondary: Object.assign(tokensDark.secondary, {
+        main: tokensDark.secondary[400],
+      }),
+      neutral: Object.assign(tokensDark.grey, {
         main: tokensDark.grey[500],
-      },
+      }),
       background: {
         default: tokensDark.primary[600],
         alt: tokensDark.primary[500],
       },
     };
-  } else if (mode === "light") {
+  } else {
     return {
-      primary: {
-        ...tokensDark.primary,
-        main: tokensDark.primary[400],
-        light: tokensDark.primary[400],
-      },
-      secondary: {
-        ...tokensDark.secondary,
-        main: tokensDark.secondary[300],
-      },
-      neutral: {
-        ...tokensDark.grey,
-        main: tokensDark.grey[500],
-      },
+      mode,
+      primary: Object.assign(tokensLight.primary, {
+        main: tokensLight.primary[400],
+        light: tokensLight.primary[400],
+      }),
+      secondary: Object.assign(tokensLight.secondary, {
+        main: tokensLight.secondary[300],
+      }),
+      neutral: Object.assign(tokensLight.grey, {
+        main: tokensLight.grey[500],
+      }),
       background: {
-        default: tokensDark.primary[600],
-        alt: tokensDark.primary[500],
+        default: tokensLight.primary[600],
+        alt: tokensLight.primary[500],
       },
     };
   }
 }
 
-export const themeSettings = (mode: string) => {
+export const themeSettings = (mode: "dark" | "light") => {
   return {
     palette: setPalette(mode),
     typography: {
