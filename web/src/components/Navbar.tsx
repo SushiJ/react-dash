@@ -15,9 +15,10 @@ import {
   // CaretDown,
 } from "@phosphor-icons/react";
 import { useThemeMode } from "../context/Mode";
+import { ThemeSettingType } from "../theme";
 
 export default function Navbar() {
-  const theme = useTheme();
+  const theme = useTheme<ThemeSettingType>();
   const context = useThemeMode();
 
   function toggleMode() {
@@ -36,7 +37,7 @@ export default function Navbar() {
           }}
         >
           <IconButton>
-            <List style={{ color: `${theme.palette.background.paper}` }} />
+            <List style={{ color: `${theme.palette.secondary.main}` }} />
           </IconButton>
           <Box
             sx={{
@@ -47,11 +48,16 @@ export default function Navbar() {
               p: "0.1rem 1.5rem",
               borderRadius: "9px",
             }}
-            bgcolor={theme.palette.background.paper}
+            bgcolor={theme.palette.background.alt}
           >
-            <InputBase placeholder="Search..." />
+            <InputBase
+              placeholder="Search..."
+              style={{ color: `${theme.palette.secondary.main}` }}
+            />
             <IconButton>
-              <MagnifyingGlass />
+              <MagnifyingGlass
+                style={{ color: `${theme.palette.secondary.main}` }}
+              />
             </IconButton>
           </Box>
         </Box>
@@ -60,11 +66,11 @@ export default function Navbar() {
             {theme.palette.mode === "dark" ? (
               <Moon style={{ color: `${theme.palette.secondary.main}` }} />
             ) : (
-              <Sun style={{ color: `${theme.palette.secondary.light}` }} />
+              <Sun style={{ color: `${theme.palette.secondary.main}` }} />
             )}
           </IconButton>
           <IconButton>
-            <Gear />
+            <Gear style={{ color: `${theme.palette.secondary.main}` }} />
           </IconButton>
         </Box>
       </Toolbar>

@@ -159,3 +159,5 @@ export const themeSettings = (mode: "dark" | "light") => {
     },
   };
 };
+
+export type ThemeSettingType = ReturnType<typeof themeSettings>;
