@@ -1,11 +1,4 @@
-import {
-  AppBar,
-  Box,
-  IconButton,
-  InputBase,
-  Toolbar,
-  useTheme,
-} from "@mui/material";
+import { AppBar, Box, IconButton, InputBase, Toolbar } from "@mui/material";
 import {
   Sun,
   Moon,
@@ -15,10 +8,15 @@ import {
   // CaretDown,
 } from "@phosphor-icons/react";
 import { useThemeMode } from "../context/Mode";
-import { ThemeSettingType } from "../theme";
+import useThemeWrapper from "../hooks/useThemeWrapper";
 
-export default function Navbar() {
-  const theme = useTheme<ThemeSettingType>();
+type NavbarProps = {
+  sidebarOpen: boolean;
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function Navbar(props: NavbarProps) {
+  const theme = useThemeWrapper();
   const context = useThemeMode();
 
   function toggleMode() {
@@ -29,7 +27,7 @@ export default function Navbar() {
 
   return (
     <AppBar sx={{ position: "static", background: "none", boxShadow: "none" }}>
-      <Toolbar sx={{ justifyContent: "space-between" }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box
           sx={{
             display: "flex",
@@ -37,7 +35,7 @@ export default function Navbar() {
             alignItems: "center",
           }}
         >
-          <IconButton>
+          <IconButton onClick={() => props.setSidebarOpen((prev) => !prev)}>
             <List />
           </IconButton>
           <Box
@@ -45,7 +43,7 @@ export default function Navbar() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              gap: "3rem",
+              gap: "2rem",
               p: "0.1rem 1.5rem",
               borderRadius: "9px",
             }}
@@ -57,7 +55,7 @@ export default function Navbar() {
             </IconButton>
           </Box>
         </Box>
-        <Box gap="1.5rem">
+        <Box gap="1rem" display="flex">
           <IconButton onClick={toggleMode}>
             {theme.palette.mode === "dark" ? <Moon /> : <Sun />}
           </IconButton>
