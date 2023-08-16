@@ -95,7 +95,7 @@ function setPalette(mode: "dark" | "light") {
         light: tokensDark.primary[400],
       }),
       secondary: Object.assign(tokensDark.secondary, {
-        main: tokensDark.secondary[400],
+        main: tokensDark.secondary[300],
       }),
       neutral: Object.assign(tokensDark.grey, {
         main: tokensDark.grey[500],
@@ -109,18 +109,19 @@ function setPalette(mode: "dark" | "light") {
     return {
       mode,
       primary: Object.assign(tokensLight.primary, {
-        main: tokensLight.primary[400],
-        light: tokensLight.primary[400],
+        main: tokensLight.grey[900],
+        light: tokensLight.grey[800],
       }),
       secondary: Object.assign(tokensLight.secondary, {
-        main: tokensLight.secondary[300],
+        main: tokensLight.secondary[400],
+        light: tokensLight.secondary[300],
       }),
       neutral: Object.assign(tokensLight.grey, {
-        main: tokensLight.grey[500],
+        main: tokensLight.grey[300],
       }),
       background: {
-        default: tokensLight.primary[600],
-        alt: tokensLight.primary[500],
+        default: tokensLight.grey[1000],
+        alt: tokensLight.grey[900],
       },
     };
   }

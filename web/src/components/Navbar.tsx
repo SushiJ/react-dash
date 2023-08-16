@@ -26,6 +26,7 @@ export default function Navbar() {
       ? context?.setMode("dark")
       : context?.setMode("light");
   }
+
   return (
     <AppBar sx={{ position: "static", background: "none", boxShadow: "none" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -37,7 +38,7 @@ export default function Navbar() {
           }}
         >
           <IconButton>
-            <List style={{ color: `${theme.palette.secondary.main}` }} />
+            <List />
           </IconButton>
           <Box
             sx={{
@@ -50,27 +51,18 @@ export default function Navbar() {
             }}
             bgcolor={theme.palette.background.alt}
           >
-            <InputBase
-              placeholder="Search..."
-              style={{ color: `${theme.palette.secondary.main}` }}
-            />
+            <InputBase placeholder="Search..." />
             <IconButton>
-              <MagnifyingGlass
-                style={{ color: `${theme.palette.secondary.main}` }}
-              />
+              <MagnifyingGlass />
             </IconButton>
           </Box>
         </Box>
         <Box gap="1.5rem">
           <IconButton onClick={toggleMode}>
-            {theme.palette.mode === "dark" ? (
-              <Moon style={{ color: `${theme.palette.secondary.main}` }} />
-            ) : (
-              <Sun style={{ color: `${theme.palette.secondary.main}` }} />
-            )}
+            {theme.palette.mode === "dark" ? <Moon /> : <Sun />}
           </IconButton>
           <IconButton>
-            <Gear style={{ color: `${theme.palette.secondary.main}` }} />
+            <Gear />
           </IconButton>
         </Box>
       </Toolbar>
