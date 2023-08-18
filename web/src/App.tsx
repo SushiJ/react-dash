@@ -1,11 +1,13 @@
+import { useMemo } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
+
 import { useThemeMode } from "./context/Mode";
 import { themeSettings } from "./theme";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
-import { useMemo } from "react";
 
 function App() {
   const context = useThemeMode();

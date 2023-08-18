@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   Box,
+  Divider,
   Drawer,
   IconButton,
   List,
@@ -18,6 +19,7 @@ import {
   CaretLeft,
   CaretRight,
   ChartPie,
+  Gear,
   GlobeHemisphereWest,
   HouseSimple,
   Money,
@@ -30,7 +32,23 @@ import {
 
 import useThemeWrapper from "../hooks/useThemeWrapper";
 
+type User = {
+  email: string;
+  city: string;
+  country: string;
+  createdAt: Date;
+  name: string;
+  occupation: string;
+  password: string;
+  phoneNumber: string;
+  role: string;
+  state: null;
+  transactions: string[];
+  updatedAt: Date;
+};
+
 type SidebarProps = {
+  user: User;
   drawerWidth: string;
   isMobile: boolean;
   sidebarOpen: boolean;
@@ -200,6 +218,45 @@ export default function Sidebar(props: SidebarProps) {
                 );
               })}
             </List>
+          </Box>
+          <Box position="absolute" bottom="2rem" p="0.5rem" width="100%">
+            <Divider />
+            <Box
+              textTransform="none"
+              gap="1rem"
+              m="1.rem 2rem 0 3rem"
+              pt="1rem"
+            >
+              <Box
+                component="img"
+                alt="profile"
+                src="https://via.placeholder.com/150/56a8c2"
+                height="40px"
+                width="40px"
+                borderRadius="50%"
+                sx={{ objectFit: "cover" }}
+              />
+              <Box
+                textAlign="left"
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box>
+                  <Typography
+                    fontWeight="bold"
+                    fontSize="1.25rem"
+                    sx={{ color: theme.palette.secondary[100] }}
+                  >
+                    {props.user.name}
+                  </Typography>
+                  <Typography sx={{ color: theme.palette.secondary[200] }}>
+                    {props.user.occupation}
+                  </Typography>
+                </Box>
+                <Gear size="30px" />
+              </Box>
+            </Box>
           </Box>
         </Drawer>
       )}
