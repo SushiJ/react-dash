@@ -16,14 +16,14 @@ export default function Layout() {
   return (
     <Box display={!isMobile ? "flex" : "block"} width={"100%"} height={"100%"}>
       <Sidebar
-        user={data || {}}
+        user={data}
         drawerWidth="250px"
         isMobile
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       />
       <Box flexGrow={1}>
-        <Navbar user={data || {}} sidebarOpen setSidebarOpen={setSidebarOpen} />
+        <Navbar user={data} sidebarOpen setSidebarOpen={setSidebarOpen} />
         <Outlet />
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </Box>

@@ -31,29 +31,7 @@ import {
 } from "@phosphor-icons/react";
 
 import useThemeWrapper from "../hooks/useThemeWrapper";
-
-type User = {
-  email: string;
-  city: string;
-  country: string;
-  createdAt: Date;
-  name: string;
-  occupation: string;
-  password: string;
-  phoneNumber: string;
-  role: string;
-  state: null;
-  transactions: string[];
-  updatedAt: Date;
-};
-
-type SidebarProps = {
-  user: User;
-  drawerWidth: string;
-  isMobile: boolean;
-  sidebarOpen: boolean;
-  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { SidebarProps } from "../types/shared";
 
 const navItems = [
   {
@@ -248,10 +226,10 @@ export default function Sidebar(props: SidebarProps) {
                     fontSize="1.25rem"
                     sx={{ color: theme.palette.secondary[100] }}
                   >
-                    {props.user.name}
+                    {props.user?.name ?? "Not Like this"}
                   </Typography>
                   <Typography sx={{ color: theme.palette.secondary[200] }}>
-                    {props.user.occupation}
+                    {props.user?.occupation ?? "Not Like This"}
                   </Typography>
                 </Box>
                 <Gear size="30px" />

@@ -8,6 +8,7 @@ import { themeSettings } from "./theme";
 
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
+import Products from "./pages/Products";
 
 function App() {
   const context = useThemeMode();
@@ -24,6 +25,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/products" element={<Products />} />
           </Route>
         </Routes>
       </ThemeProvider>

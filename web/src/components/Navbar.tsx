@@ -22,27 +22,7 @@ import {
 
 import { useThemeMode } from "../context/Mode";
 import useThemeWrapper from "../hooks/useThemeWrapper";
-
-type User = {
-  email: string;
-  city: string;
-  country: string;
-  createdAt: Date;
-  name: string;
-  occupation: string;
-  password: string;
-  phoneNumber: string;
-  role: string;
-  state: null;
-  transactions: string[];
-  updatedAt: Date;
-};
-
-type NavbarProps = {
-  user: User;
-  sidebarOpen: boolean;
-  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { NavbarProps } from "../types/shared";
 
 export default function Navbar(props: NavbarProps) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -131,17 +111,18 @@ export default function Navbar(props: NavbarProps) {
               >
                 <Box>
                   <Typography
-                    fontWeight="bold"
+                    fontWeight="semi-bold"
                     fontSize="0.9rem"
                     sx={{ color: theme.palette.secondary[100] }}
                   >
-                    {props.user.name}
+                    {props.user?.name ?? "Not Like This"}
                   </Typography>
                   <Typography
+                    fontStyle="italic"
                     fontSize=".75rem"
                     sx={{ color: theme.palette.secondary[200] }}
                   >
-                    {props.user.occupation}
+                    {props.user?.occupation ?? "Not Like This"}
                   </Typography>
                 </Box>
               </Box>
