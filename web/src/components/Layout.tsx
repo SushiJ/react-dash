@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { useGetUserQuery } from "../features/api";
 
-const USER_ID = "64df0c633a0f634577f9ac1c";
+const USER_ID = "63701cc1f03239b7f700000e";
 
 export default function Layout() {
   const isMobile = useMediaQuery("(max-width: 600px)");

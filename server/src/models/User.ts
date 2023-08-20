@@ -1,7 +1,13 @@
-import { getModelForClass, prop } from "@typegoose/typegoose";
+import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
 import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
 
+@modelOptions({
+  schemaOptions: { _id: false },
+})
 class User extends TimeStamps {
+  @prop({ required: true })
+  public _id!: string;
+
   @prop({ required: true, min: 2, max: 100 })
   public name!: string;
 

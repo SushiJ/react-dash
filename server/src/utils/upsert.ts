@@ -2,6 +2,7 @@ import { userModel } from "../models/User";
 import { dataUser } from "../../sample";
 
 type User = {
+  _id: string;
   name: string;
   email: string;
   password: string;
@@ -40,6 +41,7 @@ export async function upsertData() {
   } else {
     console.info("UPSERTING DATA");
     await populateUser();
+    console.log("DONE");
   }
 }
 
@@ -56,6 +58,7 @@ async function populateUser() {
       phoneNumber: userData["phoneNumber"],
       transactions: userData["transactions"],
       role: userData["role"],
+      _id: userData["_id"],
     };
     await saveUser(user);
   }
