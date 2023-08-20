@@ -1,20 +1,44 @@
-import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose";
+import {
+  Severity,
+  getModelForClass,
+  modelOptions,
+  prop,
+} from "@typegoose/typegoose";
 import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
+
+// TODO: I think i'd have to make a model for transactions we'll see
+@modelOptions({
+  schemaOptions: { _id: false },
+})
+class Transactions {
+  @prop({ required: true })
+  public _id!: string;
+
+  @prop({ required: true })
+  public userId!: string;
+
+  @prop({ required: true })
+  public cost!: number;
+
+  @prop({ required: true })
+  public products!: Array<string>;
+}
 
 @modelOptions({
   schemaOptions: { _id: false },
+  options: { allowMixed: Severity.ALLOW },
 })
 class User extends TimeStamps {
   @prop({ required: true })
   public _id!: string;
 
-  @prop({ required: true, min: 2, max: 100 })
+  @prop({ required: true, minlength: 2, maxlength: 100 })
   public name!: string;
 
-  @prop({ required: true, min: 50, max: 100, unique: true })
+  @prop({ required: true, minlength: 50, maxlength: 100, unique: true })
   public email!: string;
 
-  @prop({ required: true, min: 5 })
+  @prop({ required: true, minlength: 5 })
   public password!: string;
 
   @prop()
@@ -33,7 +57,7 @@ class User extends TimeStamps {
   public phoneNumber?: string;
 
   @prop()
-  public transactions?: Array<string>;
+  public transactions?: [Transactions];
 
   @prop({ enum: ["user", "admin", "superadmin"], default: "admin" })
   public role?: string;
