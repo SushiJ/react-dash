@@ -42,3 +42,9 @@ export type ProductStat = {
   monthlyData: Array<MonthlyData>;
   dailyData: Array<DailyData>;
 };
+export type Transactions = {
+  _id: string;
+  userId: string;
+  cost: number;
+  products: Array<string>;
+};

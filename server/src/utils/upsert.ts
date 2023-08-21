@@ -1,8 +1,14 @@
 import { userModel } from "../models/User";
 import { productModel } from "../models/Product";
 import { productStatModel } from "../models/ProductStat";
-import { dataUser, dataProduct, dataProductStat } from "../../sample";
-import { Product, ProductStat, User } from "../types";
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+} from "../../sample";
+import { Product, ProductStat, Transactions, User } from "../types";
+import { transactionsModel } from "../models/Transactions";
 
 // TODO: Think of a better way of doing this, instead of copy pasting,
 // may be a class and interface composition
@@ -130,5 +136,43 @@ async function populateProductStat() {
       yearlySalesTotal: productStat["yearlySalesTotal"],
     };
     await saveProductStat(product);
+  }
+}
+
+async function saveTransactions(transactions: Transactions) {
+  await transactionsModel.findOneAndUpdate(
+    {
+      _id: transactions._id,
+    },
+    transactions,
+    {
+      upsert: true,
+    }
+  );
+}
+
+export async function upsertTransactions() {
+  const product = await transactionsModel.findOne({
+    _id: "6371259df03239e680000035",
+  });
+
+  if (product) {
+    console.warn("Transactions data exists");
+  } else {
+    console.info("Upserting transactions data");
+    await populateTransactions();
+    console.info("DONE");
+  }
+}
+
+async function populateTransactions() {
+  for (let transactions of dataTransaction) {
+    const transaction: Transactions = {
+      _id: transactions["_id"],
+      products: transactions["products"],
+      cost: transactions["cost"],
+      userId: transactions["userId"],
+    };
+    await saveTransactions(transaction);
   }
 }

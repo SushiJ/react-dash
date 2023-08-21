@@ -6,7 +6,12 @@ import helmet from "helmet";
 import morgan from "morgan";
 
 import connect from "./utils/database";
-import { upsertProduct, upsertProductStat, upsertUser } from "./utils/upsert";
+import {
+  upsertProduct,
+  upsertProductStat,
+  upsertTransactions,
+  upsertUser,
+} from "./utils/upsert";
 import router from "./routes";
 const PORT = process.env.PORT ?? 42069;
 
@@ -37,6 +42,9 @@ app.listen(PORT, () => {
       });
       upsertProductStat().catch((e) => {
         console.error("failed to upsert productStats", e);
+      });
+      upsertTransactions().catch((e) => {
+        console.error("failed to upsert transactions", e);
       });
     })
     .catch((e) => {
