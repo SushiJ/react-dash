@@ -6,7 +6,6 @@ import {
 } from "@typegoose/typegoose";
 
 @modelOptions({
-  schemaOptions: { _id: false },
   options: { allowMixed: Severity.ALLOW },
 })
 class Product {

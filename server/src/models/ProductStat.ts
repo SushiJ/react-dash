@@ -28,14 +28,13 @@ class DailyData {
 }
 
 @modelOptions({
-  schemaOptions: { _id: false },
   options: { allowMixed: Severity.ALLOW },
 })
 class ProductStat {
   @prop({ required: true })
   public _id!: string;
 
-  @prop({ required: true, unique: true })
+  @prop({ required: true })
   public productId!: string;
 
   @prop({ required: true })

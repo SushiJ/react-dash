@@ -7,9 +7,7 @@ import {
 import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
 
 // TODO: I think i'd have to make a model for transactions we'll see
-@modelOptions({
-  schemaOptions: { _id: false },
-})
+
 class Transactions {
   @prop({ required: true })
   public _id!: string;
@@ -25,7 +23,6 @@ class Transactions {
 }
 
 @modelOptions({
-  schemaOptions: { _id: false },
   options: { allowMixed: Severity.ALLOW },
 })
 class User extends TimeStamps {
