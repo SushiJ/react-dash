@@ -24,3 +24,16 @@ export type UserResponse = {
   transactions: Array<string>;
   updatedAt: string;
 };
+
+export type CustomerResponse = {
+  _id: string;
+  city: string;
+  country: string;
+  email: string;
+  name: string;
+  occupation: string;
+  phoneNumber: string;
+  state: null;
+  transactions: Array<string>;
+  role: string;
+};

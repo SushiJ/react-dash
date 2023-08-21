@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ProductsResponse, UserResponse } from "../types/api";
+import { CustomerResponse, ProductsResponse, UserResponse } from "../types/api";
 
 const BASE_URL = "http://localhost:42069";
 export const api = createApi({
@@ -22,13 +22,13 @@ export const api = createApi({
       providesTags: ["User"],
     }),
     getProducts: builder.query<ProductsResponse[], void>({
-      query: () => "client",
+      query: () => "client/products",
       providesTags: ["Products"],
     }),
-    // getCustomers: builder.query({
-    //   query: () => "client/customers",
-    //   providesTags: ["Customers"],
-    // }),
+    getCustomers: builder.query<CustomerResponse[], void>({
+      query: () => "client/customers",
+      providesTags: ["Customers"],
+    }),
     // getTransactions: builder.query({
     //   query: ({ page, pageSize, sort, search }) => ({
     //     url: "client/transactions",
@@ -60,4 +60,5 @@ export const api = createApi({
   }),
 });
 
-export const { useGetUserQuery, useGetProductsQuery } = api;
+export const { useGetUserQuery, useGetProductsQuery, useGetCustomersQuery } =
+  api;

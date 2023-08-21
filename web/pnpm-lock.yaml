@@ -4,6 +4,8 @@ specifiers:
   '@emotion/react': ^11.11.1
   '@emotion/styled': ^11.11.0
   '@mui/material': ^5.14.5
+  '@mui/system': ^5.14.5
+  '@mui/x-data-grid': ^6.11.2
   '@phosphor-icons/react': ^2.0.10
   '@reduxjs/toolkit': ^1.9.5
   '@types/react': ^18.2.15
@@ -25,6 +27,8 @@ dependencies:
   '@emotion/react': 11.11.1_j3ahe22lw6ac2w6qvqp4kjqnqy
   '@emotion/styled': 11.11.0_yteb73ll6h6uyykb3t5anncyhm
   '@mui/material': 5.14.5_ho7f4muyxo2kcc3eb2wgnvahca
+  '@mui/system': 5.14.5_zdbjtzkah63cptavg4ofw4cz7y
+  '@mui/x-data-grid': 6.11.2_h74hjajyedwck22ygqckzw7z7e
   '@phosphor-icons/react': 2.0.10_biqbaboplfbrettd7655fr4n2y
   '@reduxjs/toolkit': 1.9.5_nnem43rer6rxr5uhc4j6bxdlmm
   react: 18.2.0
@@ -628,6 +632,26 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-is: 18.2.0
+    dev: false
+
+  /@mui/x-data-grid/6.11.2_h74hjajyedwck22ygqckzw7z7e:
+    resolution: {integrity: sha512-84IgDwjgQ2eqTJvoj0BxN2KIgQdwTf7pnR0dYxbpcIkB+LMsOxSv502UJkvWWkjm16D4vKcj4QMSLsWhc21BHg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.4.1
+      '@mui/system': ^5.4.1
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.22.10
+      '@mui/material': 5.14.5_ho7f4muyxo2kcc3eb2wgnvahca
+      '@mui/system': 5.14.5_zdbjtzkah63cptavg4ofw4cz7y
+      '@mui/utils': 5.14.5_react@18.2.0
+      clsx: 2.0.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      reselect: 4.1.8
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
