@@ -31,12 +31,12 @@ export default function Customers() {
       headerName: "Phone No.",
       flex: 0.5,
       renderCell: (params: GridRenderCellParams) =>
-        params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3"),
+        params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1) $2-$3"),
     },
     {
       field: "country",
       headerName: "Country",
-      flex: 1,
+      flex: 0.4,
     },
     {
       field: "occupation",
@@ -76,12 +76,41 @@ export default function Customers() {
   return (
     <Box p="1rem">
       <Header title="CUSTOMERS" subTitle="List of Customers" />
-      <Box>
+      <Box
+        height="75vh"
+        maxWidth="100vw"
+        py="1rem"
+        sx={{
+          "& .MuiDataGrid-root": {
+            border: "none",
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "none",
+          },
+          "& .MuiDataGrid-columnHeaders": {
+            backgroundColor: theme.palette.background.alt,
+            color: theme.palette.secondary[100],
+            borderBottom: "none",
+          },
+          "& .MuiDataGrid-virtualScroller": {
+            backgroundColor: theme.palette.primary.light,
+          },
+          "& .MuiDataGrid-footerContainer": {
+            backgroundColor: theme.palette.background.alt,
+            color: theme.palette.secondary[100],
+            borderTop: "none",
+          },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: theme.palette.secondary[200],
+          },
+        }}
+      >
         <DataGrid
           loading={isLoading || !data}
           rows={data ?? []}
           getRowId={(row) => row._id}
           columns={columns}
+          disableRowSelectionOnClick
         />
       </Box>
     </Box>
