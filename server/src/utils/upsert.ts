@@ -152,11 +152,11 @@ async function saveTransactions(transactions: Transactions) {
 }
 
 export async function upsertTransactions() {
-  const product = await transactionsModel.findOne({
-    _id: "6371259df03239e680000035",
+  const transaction = await transactionsModel.findOne({
+    _id: "63701d74f03239c72c000192",
   });
 
-  if (product) {
+  if (transaction) {
     console.warn("Transactions data exists");
   } else {
     console.info("Upserting transactions data");

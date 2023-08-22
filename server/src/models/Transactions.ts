@@ -1,6 +1,14 @@
-import { getModelForClass, prop } from "@typegoose/typegoose";
+import {
+  Severity,
+  getModelForClass,
+  modelOptions,
+  prop,
+} from "@typegoose/typegoose";
 import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
 
+@modelOptions({
+  options: { allowMixed: Severity.ALLOW },
+})
 class Transactions extends TimeStamps {
   @prop({ required: true })
   public _id!: string;
