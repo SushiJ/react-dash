@@ -37,3 +37,17 @@ export type CustomerResponse = {
   transactions: Array<string>;
   role: string;
 };
+
+export type TransactionsResponse = {
+  _id: string;
+  userId: string;
+  cost: number;
+  products: Array<string>;
+};
+
+export type TransactionsTypeArg = {
+  page: number;
+  pageSize: number;
+  sort: string;
+  search: string;
+};

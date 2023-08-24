@@ -1,5 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CustomerResponse, ProductsResponse, UserResponse } from "../types/api";
+import {
+  CustomerResponse,
+  ProductsResponse,
+  TransactionsResponse,
+  TransactionsTypeArg,
+  UserResponse,
+} from "../types/api";
 
 const BASE_URL = "http://localhost:42069";
 export const api = createApi({
@@ -29,14 +35,16 @@ export const api = createApi({
       query: () => "client/customers",
       providesTags: ["Customers"],
     }),
-    // getTransactions: builder.query({
-    //   query: ({ page, pageSize, sort, search }) => ({
-    //     url: "client/transactions",
-    //     method: "GET",
-    //     params: { page, pageSize, sort, search },
-    //   }),
-    //   providesTags: ["Transactions"],
-    // }),
+    getTransactions: builder.query<TransactionsResponse[], TransactionsTypeArg>(
+      {
+        query: ({ page, pageSize, sort, search }) => ({
+          url: "client/transactions",
+          method: "GET",
+          params: { page, pageSize, sort, search },
+        }),
+        providesTags: ["Transactions"],
+      }
+    ),
     // getGeography: builder.query({
     //   query: () => "client/geography",
     //   providesTags: ["Geography"],
@@ -60,5 +68,9 @@ export const api = createApi({
   }),
 });
 
-export const { useGetUserQuery, useGetProductsQuery, useGetCustomersQuery } =
-  api;
+export const {
+  useGetUserQuery,
+  useGetProductsQuery,
+  useGetCustomersQuery,
+  useGetTransactionsQuery,
+} = api;

@@ -10,6 +10,30 @@ export default function Customers() {
   const { data, isLoading, error } = useGetCustomersQuery();
   const theme = useThemeWrapper();
 
+  if (isLoading) {
+    return (
+      <Box p="1rem">
+        <p>Loading...</p>
+      </Box>
+    );
+  }
+
+  if (!data) {
+    return (
+      <Box p="1rem">
+        <p>welp</p>
+      </Box>
+    );
+  }
+
+  if (!isLoading && error) {
+    return (
+      <Box p="1rem">
+        <p>Welp...</p>
+      </Box>
+    );
+  }
+
   const columns = [
     {
       field: "_id",
@@ -50,29 +74,6 @@ export default function Customers() {
     },
   ];
 
-  if (isLoading) {
-    return (
-      <Box p="1rem">
-        <p>Loading...</p>
-      </Box>
-    );
-  }
-
-  if (!data) {
-    return (
-      <Box p="1rem">
-        <p>welp</p>
-      </Box>
-    );
-  }
-
-  if (!isLoading && error) {
-    return (
-      <Box p="1rem">
-        <p>Welp...</p>
-      </Box>
-    );
-  }
   return (
     <Box p="1rem">
       <Header title="CUSTOMERS" subTitle="List of Customers" />
