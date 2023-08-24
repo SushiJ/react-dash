@@ -57,39 +57,65 @@ export async function getCustomers(_req: Request, res: Response) {
 }
 
 type Sort = {
-  field: string;
-  sort: string;
+  field: "userId" | "cost";
+  sort: "asc" | "desc";
 };
-
 type formattedSort = {
   [key: string]: 1 | -1;
 };
 
-function generateSort(sort: string) {
+function generateSort(unparsed: any) {
   try {
-    const parseSort: Sort = JSON.parse(sort);
-    const formattedSort: formattedSort = {
-      [parseSort.field]: parseSort.sort === "asc" ? 1 : -1,
-    };
-    return formattedSort;
+    const { sort } = JSON.parse(unparsed);
+    if (sort) {
+      const flattened: Sort = {
+        field: sort[0]?.field,
+        sort: sort[0]?.sort,
+      };
+
+      const formattedSort: formattedSort = {
+        [flattened.field]: flattened.sort === "asc" ? 1 : -1,
+      };
+
+      return formattedSort;
+    }
+    return null;
   } catch (e: any) {
     console.error(e);
     throw new Error(e);
   }
 }
 
+// WARN: this is a bad implementtaion of this thing. I gotta think of this later
 export async function getTransactions(req: Request, res: Response) {
-  const { page = 1, pageSize = 20, sort = null, search = "" } = req.query;
+  const { page = 1, pageSize = 20, sort = {}, search = "" } = req.query;
+  console.table({ page, pageSize, sort, search });
   try {
     // TODO: IDK about the "as string casting"
-    const formattedSort = generateSort(sort as string);
+
+    const formattedSort = generateSort(sort);
+
+    // WARN:This is insane IKR
     const searchQuery = search
-      ? { cost: { $regex: new RegExp(String(search), "i") } }
+      ? {
+          $or: [
+            {
+              $expr: {
+                $regexMatch: {
+                  input: { $toString: "$cost" },
+                  regex: search,
+                  options: "i",
+                },
+              },
+            },
+          ],
+          userId: { $regex: new RegExp(String(search), "i") },
+        }
       : {};
 
     const transactions = await transactionsModel
       .find(searchQuery)
-      .sort(formattedSort)
+      .sort(formattedSort ? formattedSort : {})
       .skip(+page * +pageSize)
       .limit(+pageSize);
 
