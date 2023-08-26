@@ -1,4 +1,4 @@
-import { ProductStat } from "./shared";
+import { DailyData, MonthlyData, ProductStat } from "./shared";
 
 export type ProductsResponse = {
   category: string;
@@ -55,4 +55,24 @@ export type TransactionsTypeArg = {
 export type GeographyResponse = {
   id: string;
   value: number;
+};
+
+interface MonthlyDataWithId extends MonthlyData {
+  _id: string;
+}
+
+export type SalesResponse = {
+  _id: string;
+  totalCustomers: number;
+  yearlySalesTotal: number;
+  yearlyTotalSoldUnits: number;
+  year: number;
+  monthlyData: Array<MonthlyDataWithId>;
+  dailyData: Array<DailyData>;
+  salesByCategory: {
+    shoes: number;
+    clothing: number;
+    accessories: number;
+    misc: number;
+  };
 };

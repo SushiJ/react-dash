@@ -25,7 +25,6 @@ export default function Layout() {
       <Box flexGrow={1}>
         <Navbar user={data} sidebarOpen setSidebarOpen={setSidebarOpen} />
         <Outlet />
-        <pre>{JSON.stringify(data, null, 2)}</pre>
       </Box>
     </Box>
   );

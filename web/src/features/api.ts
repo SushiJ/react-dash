@@ -3,6 +3,7 @@ import {
   CustomerResponse,
   GeographyResponse,
   ProductsResponse,
+  SalesResponse,
   TransactionsResponse,
   TransactionsTypeArg,
   UserResponse,
@@ -50,10 +51,10 @@ export const api = createApi({
       query: () => "client/geography",
       providesTags: ["Geography"],
     }),
-    // getSales: builder.query({
-    //   query: () => "sales/sales",
-    //   providesTags: ["Sales"],
-    // }),
+    getSales: builder.query<SalesResponse, void>({
+      query: () => "sales",
+      providesTags: ["Sales"],
+    }),
     // getAdmins: builder.query({
     //   query: () => "management/admins",
     //   providesTags: ["Admins"],
@@ -75,4 +76,5 @@ export const {
   useGetCustomersQuery,
   useGetTransactionsQuery,
   useGetGeographyQuery,
+  useGetSalesQuery,
 } = api;

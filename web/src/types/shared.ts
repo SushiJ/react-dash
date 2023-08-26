@@ -33,11 +33,11 @@ export type DailyData = {
   totalUnits: string;
 };
 
-export type MonthlyData = {
+export interface MonthlyData {
   month: string;
-  totalSales: string;
-  totalUnits: string;
-};
+  totalSales: number;
+  totalUnits: number;
+}
 
 export type ProductStat = {
   dailyData: Array<DailyData>;
