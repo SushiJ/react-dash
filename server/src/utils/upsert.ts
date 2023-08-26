@@ -6,9 +6,17 @@ import {
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataOverallStat,
 } from "../../sample";
-import { Product, ProductStat, Transactions, User } from "../types";
+import {
+  OverallStat,
+  Product,
+  ProductStat,
+  Transactions,
+  User,
+} from "../types";
 import { transactionsModel } from "../models/Transactions";
+import { overallStatsModel } from "../models/Stats";
 
 // TODO: Think of a better way of doing this, instead of copy pasting,
 // may be a class and interface composition
@@ -174,5 +182,46 @@ async function populateTransactions() {
       userId: transactions["userId"],
     };
     await saveTransactions(transaction);
+  }
+}
+async function saveStats(stat: OverallStat) {
+  await overallStatsModel.findOneAndUpdate(
+    {
+      _id: stat._id,
+    },
+    stat,
+    {
+      upsert: true,
+    }
+  );
+}
+
+export async function upsertOverallStats() {
+  const stat = await overallStatsModel.findOne({
+    _id: "636ffd4fc7195768677097d7",
+  });
+
+  if (stat) {
+    console.warn("Stat data exists");
+  } else {
+    console.info("Upserting stat data");
+    await populateOverallStats();
+    console.info("DONE");
+  }
+}
+
+async function populateOverallStats() {
+  for (let stat of dataOverallStat) {
+    const stats: OverallStat = {
+      _id: stat["_id"],
+      yearlySalesTotal: stat["yearlySalesTotal"],
+      salesByCategory: stat["salesByCategory"],
+      year: 2023,
+      dailyData: stat["dailyData"],
+      monthlyData: stat["monthlyData"],
+      totalCustomers: stat["totalCustomers"],
+      yearlyTotalSoldUnits: stat["yearlyTotalSoldUnits"],
+    };
+    await saveStats(stats);
   }
 }

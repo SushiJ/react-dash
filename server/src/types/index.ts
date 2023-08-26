@@ -22,11 +22,11 @@ export type Product = {
   supply: number;
 };
 
-type MonthlyData = {
+interface MonthlyData {
   month: string;
   totalSales: number;
   totalUnits: number;
-};
+}
 
 type DailyData = {
   date: string;
@@ -42,6 +42,27 @@ export type ProductStat = {
   monthlyData: Array<MonthlyData>;
   dailyData: Array<DailyData>;
 };
+
+interface MonthlyDataWithId extends MonthlyData {
+  _id: string;
+}
+
+export type OverallStat = {
+  _id: string;
+  totalCustomers: number;
+  yearlySalesTotal: number;
+  yearlyTotalSoldUnits: number;
+  year: number;
+  monthlyData: Array<MonthlyDataWithId>;
+  dailyData: Array<DailyData>;
+  salesByCategory: {
+    shoes: number;
+    clothing: number;
+    accessories: number;
+    misc: number;
+  };
+};
+
 export type Transactions = {
   _id: string;
   userId: string;

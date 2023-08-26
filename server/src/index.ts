@@ -7,6 +7,7 @@ import morgan from "morgan";
 
 import connect from "./utils/database";
 import {
+  upsertOverallStats,
   upsertProduct,
   upsertProductStat,
   upsertTransactions,
@@ -33,7 +34,6 @@ app.listen(PORT, () => {
   connect()
     .then(() => {
       console.info("CONNECTED");
-      console.log(`http:localhost:${PORT}`);
       upsertUser().catch((e) => {
         console.error("Failed to upsert users", e);
       });
@@ -45,6 +45,9 @@ app.listen(PORT, () => {
       });
       upsertTransactions().catch((e) => {
         console.error("failed to upsert transactions", e);
+      });
+      upsertOverallStats().catch((e) => {
+        console.error("failed to upsert stats", e);
       });
     })
     .catch((e) => {
