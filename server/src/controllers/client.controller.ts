@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { productModel } from "../models/Product";
 import { userModel } from "../models/User";
 import { transactionsModel } from "../models/Transactions";
+import { getCountryISO3 } from "../utils/getISOmapping";
 
 export async function getProducts(_req: Request, res: Response) {
   try {
@@ -132,6 +133,37 @@ export async function getTransactions(req: Request, res: Response) {
     res.status(200).json(transactions);
   } catch (e: any) {
     console.error(e);
+    res.status(500).json({ message: e.message });
+  }
+}
+
+export async function getGeography(_req: Request, res: Response) {
+  try {
+    const countries = await userModel.find(
+      {},
+      {
+        country: 1,
+        _id: 0,
+      }
+    );
+
+    let countryISO: Record<string, number> = {};
+
+    for (let { country } of countries) {
+      if (!country) continue;
+      if (!countryISO[country]) countryISO[country] = 1;
+      else countryISO[country] += 1;
+    }
+
+    let country = [];
+
+    for (let [k, v] of Object.entries(countryISO)) {
+      let isoCountry = getCountryISO3(k);
+      country.push({ id: isoCountry, value: v });
+    }
+
+    res.status(200).json(country);
+  } catch (e: any) {
     res.status(500).json({ message: e.message });
   }
 }
