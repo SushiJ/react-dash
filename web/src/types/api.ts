@@ -51,3 +51,8 @@ export type TransactionsTypeArg = {
   sort: string;
   search: string;
 };
+
+export type GeographyResponse = {
+  id: string;
+  value: number;
+};

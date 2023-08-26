@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   CustomerResponse,
+  GeographyResponse,
   ProductsResponse,
   TransactionsResponse,
   TransactionsTypeArg,
@@ -45,10 +46,10 @@ export const api = createApi({
         providesTags: ["Transactions"],
       }
     ),
-    // getGeography: builder.query({
-    //   query: () => "client/geography",
-    //   providesTags: ["Geography"],
-    // }),
+    getGeography: builder.query<GeographyResponse[], void>({
+      query: () => "client/geography",
+      providesTags: ["Geography"],
+    }),
     // getSales: builder.query({
     //   query: () => "sales/sales",
     //   providesTags: ["Sales"],
@@ -73,4 +74,5 @@ export const {
   useGetProductsQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,
+  useGetGeographyQuery,
 } = api;
