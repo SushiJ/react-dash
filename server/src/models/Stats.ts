@@ -31,6 +31,10 @@ class DailyData {
   public totalUnits!: number;
 }
 
+@modelOptions({
+  schemaOptions: { _id: false },
+  options: { allowMixed: Severity.ALLOW },
+})
 class SalesByCategory {
   @prop({ required: true })
   public shoes!: number;
