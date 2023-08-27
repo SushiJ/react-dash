@@ -76,3 +76,18 @@ export type SalesResponse = {
     misc: number;
   };
 };
+
+export type AdminsResponse = {
+  _id: string;
+  city: string;
+  country: string;
+  createdAt: string;
+  email: string;
+  name: string;
+  occupation: string;
+  phoneNumber: string;
+  role: string;
+  state: null;
+  transactions: Array<string>;
+  updatedAt: string;
+};

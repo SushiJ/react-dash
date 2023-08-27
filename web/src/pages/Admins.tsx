@@ -1,12 +1,39 @@
 import { Box } from "@mui/material";
-import { DataGrid, GridRenderCellParams } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridColumnMenuContainer,
+  GridRenderCellParams,
+  GridColumnMenuFilterItem,
+  GridColumnMenuHideItem,
+} from "@mui/x-data-grid";
 
-import Header from "../components/Header";
-import { useGetCustomersQuery } from "../features/api";
+import { useGetAdminsQuery } from "../features/api";
 import useThemeWrapper from "../hooks/useThemeWrapper";
+import Header from "../components/Header";
 
-export default function Customers() {
-  const { data, isLoading, error } = useGetCustomersQuery();
+function CustomMenu(props: {
+  hideMenu: (event: React.SyntheticEvent) => void;
+  colDef: GridColDef;
+  open: boolean;
+}) {
+  return (
+    <GridColumnMenuContainer
+      hideMenu={props.hideMenu}
+      colDef={props.colDef}
+      open={props.open}
+    >
+      <GridColumnMenuFilterItem
+        onClick={props.hideMenu}
+        colDef={props.colDef}
+      />
+      <GridColumnMenuHideItem colDef={props.colDef} onClick={props.hideMenu} />
+    </GridColumnMenuContainer>
+  );
+}
+
+export default function Admins() {
+  const { data, isLoading, error } = useGetAdminsQuery();
   const theme = useThemeWrapper();
 
   if (isLoading) {
@@ -17,18 +44,18 @@ export default function Customers() {
     );
   }
 
-  if (!data) {
+  if (!isLoading && error) {
     return (
       <Box p="1rem">
-        <p>welp</p>
+        <p>Ehruhror...</p>
       </Box>
     );
   }
 
-  if (!isLoading && error) {
+  if (!data) {
     return (
       <Box p="1rem">
-        <p>Welp...</p>
+        <p>Data modCheck</p>
       </Box>
     );
   }
@@ -74,8 +101,8 @@ export default function Customers() {
   ];
 
   return (
-    <Box p="1rem">
-      <Header title="ADMINS" subTitle="List of admins" />
+    <Box p="1rem" maxWidth="100vw">
+      <Header title="ADMINS" subTitle="List of ADMINS" />
       <Box
         height="75vh"
         maxWidth="100vw"
@@ -111,6 +138,7 @@ export default function Customers() {
           getRowId={(row) => row._id}
           columns={columns}
           disableRowSelectionOnClick
+          slots={{ columnMenu: CustomMenu }}
         />
       </Box>
     </Box>

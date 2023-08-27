@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
+  AdminsResponse,
   CustomerResponse,
   GeographyResponse,
   ProductsResponse,
@@ -55,10 +56,10 @@ export const api = createApi({
       query: () => "sales",
       providesTags: ["Sales"],
     }),
-    // getAdmins: builder.query({
-    //   query: () => "management/admins",
-    //   providesTags: ["Admins"],
-    // }),
+    getAdmins: builder.query<AdminsResponse[], void>({
+      query: () => "management/admins",
+      providesTags: ["Admins"],
+    }),
     // getUserPerformance: builder.query({
     //   query: (id) => `management/performance/${id}`,
     //   providesTags: ["Performance"],
@@ -77,4 +78,5 @@ export const {
   useGetTransactionsQuery,
   useGetGeographyQuery,
   useGetSalesQuery,
+  useGetAdminsQuery,
 } = api;
