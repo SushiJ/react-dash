@@ -24,10 +24,10 @@ function OverviewChart({
     const totalSalesLine = {
       id: "totalSales",
       color: theme.palette.secondary.main,
-      data: [] as {
+      data: [] as Array<{
         x: string;
         y: number;
-      }[],
+      }>,
     };
 
     const totalUnitsLine = {

@@ -29,8 +29,8 @@ export type SidebarProps = {
 
 export type DailyData = {
   date: string;
-  totalSales: string;
-  totalUnits: string;
+  totalSales: number;
+  totalUnits: number;
 };
 
 export interface MonthlyData {
