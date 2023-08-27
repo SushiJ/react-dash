@@ -7,6 +7,7 @@ import {
   getTransactions,
 } from "../controllers/client.controller";
 import { getSales } from "../controllers/sales.controller";
+import { getAdmins } from "../controllers/management.controller";
 
 const router = Router();
 
@@ -18,5 +19,7 @@ router.get("/client/transactions", getTransactions);
 router.get("/client/geography", getGeography);
 
 router.get("/sales", getSales);
+
+router.get("/management/admins", getAdmins);
 
 export default router;
