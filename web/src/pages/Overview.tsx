@@ -22,7 +22,7 @@ function OverviewChart({
     const { monthlyData } = data;
 
     const totalSalesLine = {
-      id: "totalSales",
+      id: "totalSalesLine",
       color: theme.palette.secondary.main,
       data: [] as Array<{
         x: string;
@@ -32,7 +32,7 @@ function OverviewChart({
 
     const totalUnitsLine = {
       id: "totalUnitsLine",
-      color: theme.palette.secondary.main,
+      color: theme.palette.secondary[600],
       data: [] as Array<{
         x: string;
         y: number;
