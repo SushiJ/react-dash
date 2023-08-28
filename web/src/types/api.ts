@@ -91,3 +91,12 @@ export type AdminsResponse = {
   transactions: Array<string>;
   updatedAt: string;
 };
+
+export type PerformanceResponse = {
+  _id: string;
+  cost: number;
+  createdAt: string;
+  products: Array<string>;
+  updatedAt: string;
+  userId: string;
+};

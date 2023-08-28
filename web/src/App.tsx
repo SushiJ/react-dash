@@ -17,6 +17,7 @@ import Daily from "./pages/Daily";
 import { Monthly } from "./pages/Monthly";
 import Breakdown from "./pages/Breakdown";
 import Admins from "./pages/Admins";
+import Perfomance from "./pages/Perfomance";
 
 function App() {
   const context = useThemeMode();
@@ -42,6 +43,7 @@ function App() {
             <Route path="/monthly" element={<Monthly />} />
             <Route path="/breakdown" element={<Breakdown />} />
             <Route path="/admin" element={<Admins />} />
+            <Route path="/performance" element={<Perfomance />} />
           </Route>
         </Routes>
       </ThemeProvider>

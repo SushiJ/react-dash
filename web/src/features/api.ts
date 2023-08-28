@@ -3,6 +3,7 @@ import {
   AdminsResponse,
   CustomerResponse,
   GeographyResponse,
+  PerformanceResponse,
   ProductsResponse,
   SalesResponse,
   TransactionsResponse,
@@ -60,10 +61,10 @@ export const api = createApi({
       query: () => "management/admins",
       providesTags: ["Admins"],
     }),
-    // getUserPerformance: builder.query({
-    //   query: (id) => `management/performance/${id}`,
-    //   providesTags: ["Performance"],
-    // }),
+    getUserPerformance: builder.query<PerformanceResponse[], string>({
+      query: (id) => `management/performance/${id}`,
+      providesTags: ["Performance"],
+    }),
     // getDashboard: builder.query({
     //   query: () => "general/dashboard",
     //   providesTags: ["Dashboard"],
@@ -79,4 +80,5 @@ export const {
   useGetGeographyQuery,
   useGetSalesQuery,
   useGetAdminsQuery,
+  useGetUserPerformanceQuery,
 } = api;
