@@ -7,8 +7,10 @@ import {
   dataProductStat,
   dataTransaction,
   dataOverallStat,
+  dataAffiliateStat,
 } from "../../sample";
 import {
+  Affiliate,
   OverallStat,
   Product,
   ProductStat,
@@ -17,6 +19,7 @@ import {
 } from "../types";
 import { transactionsModel } from "../models/Transactions";
 import { overallStatsModel } from "../models/Stats";
+import { affiliateModel } from "../models/Affiliate";
 
 // TODO: Think of a better way of doing this, instead of copy pasting,
 // may be a class and interface composition
@@ -184,6 +187,7 @@ async function populateTransactions() {
     await saveTransactions(transaction);
   }
 }
+
 async function saveStats(stat: OverallStat) {
   await overallStatsModel.findOneAndUpdate(
     {
@@ -223,5 +227,42 @@ async function populateOverallStats() {
       yearlyTotalSoldUnits: stat["yearlyTotalSoldUnits"],
     };
     await saveStats(stats);
+  }
+}
+
+async function saveAffiliates(stat: Affiliate) {
+  await affiliateModel.findOneAndUpdate(
+    {
+      _id: stat._id,
+    },
+    stat,
+    {
+      upsert: true,
+    }
+  );
+}
+
+export async function upsertAffiliate() {
+  const stat = await affiliateModel.findOne({
+    _id: "6371251df03239e680000033",
+  });
+
+  if (stat) {
+    console.warn("Affiliate data exists");
+  } else {
+    console.info("Upserting Affiliate data");
+    await populateAffiliate();
+    console.info("DONE");
+  }
+}
+
+async function populateAffiliate() {
+  for (let stat of dataAffiliateStat) {
+    const stats: Affiliate = {
+      _id: stat["_id"],
+      userId: stat["userId"],
+      affiliateSales: stat["affiliateSales"],
+    };
+    await saveAffiliates(stats);
   }
 }

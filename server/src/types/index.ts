@@ -69,3 +69,9 @@ export type Transactions = {
   cost: number;
   products: Array<string>;
 };
+
+export type Affiliate = {
+  _id: string;
+  userId: string;
+  affiliateSales: Array<string>;
+};

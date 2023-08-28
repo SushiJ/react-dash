@@ -7,6 +7,7 @@ import morgan from "morgan";
 
 import connect from "./utils/database";
 import {
+  upsertAffiliate,
   upsertOverallStats,
   upsertProduct,
   upsertProductStat,
@@ -48,6 +49,9 @@ app.listen(PORT, () => {
       });
       upsertOverallStats().catch((e) => {
         console.error("failed to upsert stats", e);
+      });
+      upsertAffiliate().catch((e) => {
+        console.error("failed to upsert affiliate", e);
       });
     })
     .catch((e) => {
