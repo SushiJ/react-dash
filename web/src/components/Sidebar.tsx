@@ -181,7 +181,7 @@ export default function Sidebar(props: SidebarProps) {
                             active === textLower
                               ? theme.palette.primary[600]
                               : theme.palette.secondary[200],
-                          fontSize: "1rem",
+                          fontSize: "1.5rem",
                         }}
                       >
                         {icon}
@@ -199,16 +199,11 @@ export default function Sidebar(props: SidebarProps) {
           </Box>
           <Box position="absolute" bottom="2rem" p="0.5rem" width="100%">
             <Divider />
-            <Box
-              textTransform="none"
-              gap="1rem"
-              m="1.rem 2rem 0 3rem"
-              pt="1rem"
-            >
+            <Box textTransform="none" gap="1rem" pt="2rem" px="0.5rem">
               <Box
                 component="img"
                 alt="profile"
-                src="https://via.placeholder.com/150/56a8c2"
+                src="https://placeholder.photo/img/500?bg_color=73d8ff&text="
                 height="40px"
                 width="40px"
                 borderRadius="50%"

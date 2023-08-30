@@ -97,7 +97,7 @@ export default function Navbar(props: NavbarProps) {
               <Box
                 component="img"
                 alt="profile"
-                src="https://via.placeholder.com/150/56a8c2"
+                src="https://placeholder.photo/img/500?bg_color=73d8ff&text="
                 height="20px"
                 width="20px"
                 borderRadius="50%"
