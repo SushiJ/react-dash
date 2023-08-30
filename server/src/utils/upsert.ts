@@ -220,7 +220,7 @@ async function populateOverallStats() {
       _id: stat["_id"],
       yearlySalesTotal: stat["yearlySalesTotal"],
       salesByCategory: stat["salesByCategory"],
-      year: 2023,
+      year: 2021,
       dailyData: stat["dailyData"],
       monthlyData: stat["monthlyData"],
       totalCustomers: stat["totalCustomers"],

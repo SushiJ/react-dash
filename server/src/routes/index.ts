@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getUser } from "../controllers/user.controller";
+import { getDashboardStats, getUser } from "../controllers/user.controller";
 import {
   getCustomers,
   getGeography,
@@ -23,4 +23,5 @@ router.get("/sales", getSales);
 router.get("/management/admins", getAdmins);
 router.get("/management/performance/:id", getAffiliate);
 
+router.get("/dashboard", getDashboardStats);
 export default router;
