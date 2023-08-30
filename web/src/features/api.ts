@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   AdminsResponse,
   CustomerResponse,
+  DashboardResponse,
   GeographyResponse,
   PerformanceResponse,
   ProductsResponse,
@@ -65,10 +66,10 @@ export const api = createApi({
       query: (id) => `management/performance/${id}`,
       providesTags: ["Performance"],
     }),
-    // getDashboard: builder.query({
-    //   query: () => "general/dashboard",
-    //   providesTags: ["Dashboard"],
-    // }),
+    getDashboard: builder.query<DashboardResponse, void>({
+      query: () => "dashboard",
+      providesTags: ["Dashboard"],
+    }),
   }),
 });
 
@@ -81,4 +82,5 @@ export const {
   useGetSalesQuery,
   useGetAdminsQuery,
   useGetUserPerformanceQuery,
+  useGetDashboardQuery,
 } = api;

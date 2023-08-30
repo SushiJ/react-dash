@@ -100,3 +100,13 @@ export type PerformanceResponse = {
   updatedAt: string;
   userId: string;
 };
+
+export type DashboardResponse = {
+  monthStat: MonthlyData;
+  salesByCategory: Pick<SalesResponse, "salesByCategory">;
+  todayStat: DailyData;
+  totalCustomers: number;
+  transactions: Array<TransactionsResponse>;
+  yearlySalesTotal: number;
+  yearlyTotalSoldUnits: number;
+};
