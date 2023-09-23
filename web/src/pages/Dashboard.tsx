@@ -153,6 +153,7 @@ function OverviewChart(): JSX.Element {
             },
           },
         }}
+        colors={{ datum: "color" }}
         margin={{ top: 20, right: 50, bottom: 50, left: 70 }}
         xScale={{ type: "point" }}
         yScale={{

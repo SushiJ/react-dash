@@ -1,19 +1,19 @@
-// TODO: Change the theme later
+// TODO: Hover states are kinda rough, Gotta look into it
 export const tokensDark = {
   grey: {
     0: "#ffffff", // manually adjusted
     10: "#f6f6f6", // manually adjusted
     50: "#f0f0f0", // manually adjusted
-    100: "#e0e0e0",
-    200: "#c2c2c2",
-    300: "#a3a3a3",
-    400: "#858585",
-    500: "#666666",
-    600: "#525252",
-    700: "#3d3d3d",
-    800: "#292929",
-    900: "#141414",
-    1000: "#000000", // manually adjusted
+    100: "#f3f4f6",
+    200: "#e5e7eb",
+    300: "#d1d5db",
+    400: "#9ca3af",
+    500: "#6b7280",
+    600: "#4b5563",
+    700: "#374151",
+    800: "#1f2937",
+    900: "#030712",
+    1000: "#0a0a0a", // manually adjusted
   },
   primary: {
     // blue
@@ -28,17 +28,16 @@ export const tokensDark = {
     900: "#070812",
   },
   secondary: {
-    // yellow
-    50: "#f0f0f0", // manually adjusted
-    100: "#fff6e0",
-    200: "#ffedc2",
-    300: "#ffe3a3",
-    400: "#ffda85",
-    500: "#ffd166",
-    600: "#cca752",
-    700: "#997d3d",
-    800: "#665429",
-    900: "#332a14",
+    // Pink
+    100: "#fce7f3",
+    200: "#fbcfe8",
+    300: "#f9a8d4",
+    400: "#f472b6",
+    500: "#ec4899",
+    600: "#db2777",
+    700: "#be185d",
+    800: "#9d174d",
+    900: "#831843",
   },
 };
 
@@ -47,15 +46,15 @@ export const tokensLight = {
     0: "#000000", // manually adjusted
     10: "#141414",
     50: "#292929",
-    100: "#3d3d3d",
-    200: "#525252",
-    300: "#666666",
-    400: "#858585",
-    500: "#a3a3a3",
-    600: "#c2c2c2",
-    700: "#e0e0e0",
-    800: "#f0f0f0", // manually adjusted
-    900: "#f6f6f6", // manually adjusted
+    100: "#030712",
+    200: "#1f2937",
+    300: "#374151",
+    400: "#4b5563",
+    500: "#6b7280",
+    600: "#9ca3af",
+    700: "#d1d5db",
+    800: "#e5e7eb",
+    900: "#f3f4f6",
     1000: "#ffffff", // manually adjusted
   },
 
@@ -71,19 +70,17 @@ export const tokensLight = {
     800: "#a6a9be",
     900: "#d3d4de",
   },
-
   secondary: {
-    // yellow
-    50: "#332a14",
-    100: "#665429",
-    200: "#997d3d",
-    300: "#cca752",
-    400: "#ffd166",
-    500: "#ffda85",
-    600: "#ffe3a3",
-    700: "#ffedc2",
-    800: "#fff6e0",
-    900: "#f0f0f0", // manually adjusted
+    // Pink
+    100: "#831843",
+    200: "#9d174d",
+    300: "#be185d",
+    400: "#db2777",
+    500: "#ec4899",
+    600: "#f472b6",
+    700: "#f9a8d4",
+    800: "#fbcfe8",
+    900: "#fce7f3",
   },
 };
 

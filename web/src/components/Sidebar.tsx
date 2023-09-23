@@ -199,11 +199,11 @@ export default function Sidebar(props: SidebarProps) {
           </Box>
           <Box position="absolute" bottom="2rem" p="0.5rem" width="100%">
             <Divider />
-            <Box textTransform="none" gap="1rem" pt="2rem" px="0.5rem">
+            <Box textTransform="none" gap="1rem" pt="1rem" px="0.5rem">
               <Box
                 component="img"
                 alt="profile"
-                src="https://placeholder.photo/img/500?bg_color=73d8ff&text="
+                src="https://placeholder.photo/img/500?bg_color=be185d&text="
                 height="40px"
                 width="40px"
                 borderRadius="50%"
