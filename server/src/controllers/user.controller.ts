@@ -14,7 +14,7 @@ export async function getUser(req: Request, res: Response) {
     }
     res.status(200).json(user);
   } catch (e: any) {
-    res.status(404).json({ message: e.message });
+    res.status(500).json({ message: e.message });
   }
 }
 
@@ -32,7 +32,7 @@ export async function getDashboardStats(_req: Request, res: Response) {
         {
           __v: 0,
           updatedAt: 0,
-        }
+        },
       )
       .limit(50)
       .sort({ createdAt: -1 });

@@ -87,31 +87,27 @@ function generateSort(unparsed: any) {
   }
 }
 
-// WARN: this is a bad implementtaion of this thing. I gotta think of this later
 export async function getTransactions(req: Request, res: Response) {
   const { page = 1, pageSize = 20, sort = {}, search = "" } = req.query;
-  console.table({ page, pageSize, sort, search });
   try {
-    // TODO: IDK about the "as string casting"
-
     const formattedSort = generateSort(sort);
 
     // WARN:This is insane IKR
     const searchQuery = search
       ? {
-          $or: [
-            {
-              $expr: {
-                $regexMatch: {
-                  input: { $toString: "$cost" },
-                  regex: search,
-                  options: "i",
-                },
+        $or: [
+          {
+            $expr: {
+              $regexMatch: {
+                input: { $toString: "$cost" },
+                regex: search,
+                options: "i",
               },
             },
-          ],
-          userId: { $regex: new RegExp(String(search), "i") },
-        }
+          },
+        ],
+        userId: { $regex: new RegExp(String(search), "i") },
+      }
       : {};
 
     const transactions = await transactionsModel
@@ -144,7 +140,7 @@ export async function getGeography(_req: Request, res: Response) {
       {
         country: 1,
         _id: 0,
-      }
+      },
     );
 
     let countryISO: Record<string, number> = {};
