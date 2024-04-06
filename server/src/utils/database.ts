@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const MONGO_URL = "mongodb://mongo:mongo@127.0.0.1:27017/";
-export default async function connect() {
+export default async function connect(): Promise<void> {
   mongoose.connect(MONGO_URL, {
     user: "mongo",
     pass: "mongo",

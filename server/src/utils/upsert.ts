@@ -21,9 +21,6 @@ import { transactionsModel } from "../models/Transactions";
 import { overallStatsModel } from "../models/Stats";
 import { affiliateModel } from "../models/Affiliate";
 
-// TODO: Think of a better way of doing this, instead of copy pasting,
-// may be a class and interface composition
-
 async function saveUser(user: User) {
   await userModel.findOneAndUpdate(
     {
@@ -32,7 +29,7 @@ async function saveUser(user: User) {
     user,
     {
       upsert: true,
-    }
+    },
   );
 }
 
@@ -44,7 +41,7 @@ export async function upsertUser() {
   if (user) {
     console.warn("User Data already exists");
   } else {
-    console.info("UPSERTING DATA");
+    console.info("UPSERTING USER DATA");
     await populateUser();
     console.info("DONE");
   }
@@ -77,7 +74,7 @@ async function saveProduct(product: Product) {
     product,
     {
       upsert: true,
-    }
+    },
   );
 }
 
@@ -118,7 +115,7 @@ async function saveProductStat(productStat: ProductStat) {
     productStat,
     {
       upsert: true,
-    }
+    },
   );
 }
 
@@ -158,7 +155,7 @@ async function saveTransactions(transactions: Transactions) {
     transactions,
     {
       upsert: true,
-    }
+    },
   );
 }
 
@@ -196,7 +193,7 @@ async function saveStats(stat: OverallStat) {
     stat,
     {
       upsert: true,
-    }
+    },
   );
 }
 
@@ -238,7 +235,7 @@ async function saveAffiliates(stat: Affiliate) {
     stat,
     {
       upsert: true,
-    }
+    },
   );
 }
 
