@@ -203,7 +203,7 @@ export default function Sidebar(props: SidebarProps) {
               <Box
                 component="img"
                 alt="profile"
-                src="https://placeholder.photo/img/500?bg_color=be185d&text="
+                src="https://placehold.jp/96/be185d/ffffff/150x150.png?text=S"
                 height="40px"
                 width="40px"
                 borderRadius="50%"

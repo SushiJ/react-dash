@@ -93,7 +93,7 @@ export default function Perfomance() {
 
   return (
     <Box p="1rem" maxWidth="100vw">
-      <Header title="ADMINS" subTitle="List of ADMINS" />
+      <Header title="ADMINS" subTitle="Admin Perfomance" />
       <Box
         height="75vh"
         maxWidth="100vw"

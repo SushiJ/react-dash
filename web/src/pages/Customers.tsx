@@ -75,7 +75,7 @@ export default function Customers() {
 
   return (
     <Box p="1rem">
-      <Header title="ADMINS" subTitle="List of admins" />
+      <Header title="Customers" subTitle="List of customers" />
       <Box
         height="75vh"
         maxWidth="100vw"
