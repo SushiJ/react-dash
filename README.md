@@ -18,8 +18,20 @@ pnpm dev ./web && pnpm dev ./server
 - Redux toolkit query
 
 ### overview
+-- Dashboard
+<img src="ss/dashboard.png" />
 
--- Insert Images here
+-- Products
+<img src="ss/Products.png" />
+
+-- Geolocation of customers
+<img src="ss/map.png" />
+
+-- Sales
+<img src="ss/sales.png" />
+
+-- Breakdown
+<img src="ss/breakdown-wheel.png" />
 
 ### routes
 
