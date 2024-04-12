@@ -4,6 +4,11 @@
 
 ```sh
 docker start mongodb
+
+# Seeding mongo
+pnpm seed
+
+# Running the dev server
 pnpm dev ./web && pnpm dev ./server
 # open localhost:5173
 ```
