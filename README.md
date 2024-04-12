@@ -72,6 +72,8 @@ prefix with : /management
 
 ### Learnings:
 
+- MUI has some pretty useful predefined components
+
 - Aggregating data in mongodb is pretty wild:
 
   - [1](https://github.com/SushiJ/react-dash/blob/main/server/src/controllers/management.controller.ts#L20C1-L59C8)
@@ -173,3 +175,7 @@ prefix with : /management
   ```
 
 That's pretty much it, happy hacking!
+
+### TODO:
+
+- Fix some styling issues between light mode and dark mode
